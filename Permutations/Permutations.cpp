@@ -2,7 +2,7 @@
 #include <vector>
 #include <fstream>          //fstream header file for ifstream class 
 #include<string>
-
+#include <algorithm>
 using namespace std; 
 
 void printPermutations(vector <vector<char>> &inputs){
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
         return -1;
     }
     string line;                // variable declared to store each line read
-    
+
     vector <vector<char>> inputs;       //2D vector declared to store the inputs
  	 
 	while (fin) {                       // Execute a loop until EOF (End of File)
@@ -82,6 +82,13 @@ int main(int argc, char *argv[])
                 temp.push_back(line[k]);
             }
         }
+
+        vector<char>::iterator ip; 
+   
+        ip = std::unique(temp.begin(), temp.end());                // Using std::unique
+     
+        temp.resize(std::distance(temp.begin(), ip));             // Resizing the vector so as to remove the undefined terms
+
         inputs.push_back(temp);                 //Row is inserted into 2D vector inputs
 	}
    
