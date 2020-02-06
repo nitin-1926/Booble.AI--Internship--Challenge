@@ -49,12 +49,15 @@ void printPermutations(vector <vector<char>> &inputs){
         } 
     }
 }
-int main() 
+int main(int argc, char *argv[]) 
 { 
 	ifstream fin;               // Creation of ifstream class object to read the file
 
-	fin.open("input.csv");      // by default open mode = ios::in mode 
-    
+	fin.open(argv[1]);      // by default open mode = ios::in mode 
+    if(!fin){
+        cout<<"File Can't Be Opened";
+        return -1;
+    }
     string line;                // variable declared to store each line read
     
     vector <vector<char>> inputs;       //2D vector declared to store the inputs
